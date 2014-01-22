@@ -1,5 +1,7 @@
 # bootstrap3-datetimepicker-rails
 
+[![Gem Version](https://badge.fury.io/rb/bootstrap3-datetimepicker-rails.png)](http://badge.fury.io/rb/bootstrap3-datetimepicker-rails)
+
 This gem packages the [bootstrap-datetimepicker](https://github.com/Eonasdan/bootstrap-datetimepicker) for the Rails 3.1+ asset pipeline.
 
 Eonasdan's fork of tarruda's [bootstrap-datetimepicker](https://github.com/tarruda/bootstrap-datetimepicker) is
