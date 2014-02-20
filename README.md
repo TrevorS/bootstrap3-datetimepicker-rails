@@ -39,7 +39,7 @@ Add the following to your Javascript manifest file (`application.js`):
 If you want to include a localization, also add:
 ```js
 //= require moment/<locale>
-//= require locales/bootstrap-datetimepicker.<locale>
+//= require locales/bootstrap-datetimepicker.<locale>.js
 ```
 
 Add the following to your stylesheet file:
