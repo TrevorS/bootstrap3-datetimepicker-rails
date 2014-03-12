@@ -1,5 +1,5 @@
 module Bootstrap3Datetimepicker
   module Rails
-    VERSION = '2.1.30'
+    VERSION = '3.0.0'
   end
 end
