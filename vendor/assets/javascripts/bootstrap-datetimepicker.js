@@ -195,10 +195,8 @@ THE SOFTWARE.
             attachDatePickerEvents();
             if (picker.options.defaultDate !== "" && getPickerInput().val() == "") picker.setValue(picker.options.defaultDate);
             if (picker.options.minuteStepping !== 1) {
-                var rMinutes = picker.date.minutes();
                 var rInterval = picker.options.minuteStepping;
-                picker.date.minutes((Math.round(rMinutes / rInterval) * rInterval) % 60)
-                           .seconds(0);
+                picker.date.minutes((Math.round(picker.date.minutes() / rInterval) * rInterval) % 60).seconds(0);
             }
         },
 
@@ -365,6 +363,7 @@ THE SOFTWARE.
                 startMonth = picker.options.minDate.month(),
                 endYear = picker.options.maxDate.year(),
                 endMonth = picker.options.maxDate.month(),
+                currentDate,
                 prevMonth, nextMonth, html = [], row, clsName, i, days, yearCont, currentYear, months = pMoment.months();
 
             picker.widget.find('.datepicker-days').find('.disabled').removeClass('disabled');
@@ -416,7 +415,13 @@ THE SOFTWARE.
                     }
                 }
                 row.append('<td class="day' + clsName + '">' + prevMonth.date() + '</td>');
+
+                currentDate = prevMonth.date();
                 prevMonth.add(1, "d");
+
+                if (currentDate == prevMonth.date()) {
+                  prevMonth.add(1, "d");
+                }
             }
             picker.widget.find('.datepicker-days tbody').empty().append(html);
             currentYear = picker.date.year(), months = picker.widget.find('.datepicker-months')
@@ -489,7 +494,7 @@ THE SOFTWARE.
         fillMinutes = function () {
             var table = picker.widget.find('.timepicker .timepicker-minutes table'), html = '', current = 0, i, j, step = picker.options.minuteStepping;
             table.parent().hide();
-            if (step = 1) step = 5;
+            if (step == 1) step = 5;
             for (i = 0; i < Math.ceil(60 / step / 4) ; i++) {
                 html += '<tr>';
                 for (j = 0; j < 4; j += 1) {
@@ -1037,12 +1042,27 @@ THE SOFTWARE.
         };
 
         picker.show = function (e) {
-            if (picker.options.useCurrent === true) {
+            if (picker.options.useCurrent) {
                 if (getPickerInput().val() == '') {
-                    picker.setValue(pMoment().format(picker.format))
+                    if (picker.options.minuteStepping !== 1) {
+                        var mDate = pMoment(),
+                        rInterval = picker.options.minuteStepping;
+                        mDate.minutes((Math.round(mDate.minutes() / rInterval) * rInterval) % 60)
+                            .seconds(0);
+                        picker.setValue(mDate.format(picker.format))
+                    } else {
+                        picker.setValue(pMoment().format(picker.format))
+                    }
                 };
             }
-            picker.widget.show();
+            if (picker.widget.hasClass("picker-open")) {
+            	picker.widget.hide();
+            	picker.widget.removeClass("picker-open");
+            }
+            else {
+            	picker.widget.show();
+            	picker.widget.addClass("picker-open");
+            }
             picker.height = picker.component ? picker.component.outerHeight() : picker.element.outerHeight();
             place();
             picker.element.trigger({
@@ -1099,7 +1119,7 @@ THE SOFTWARE.
             } else {
                 picker.unset = false;
             }
-            if (!pMoment.isMoment(newDate)) newDate = pMoment(newDate);
+            if (!pMoment.isMoment(newDate)) newDate = pMoment(newDate, picker.format);
             if (newDate.isValid()) {
                 picker.date = newDate;
                 set();
