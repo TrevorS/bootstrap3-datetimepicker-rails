@@ -48,6 +48,7 @@ Add the following to your stylesheet file:
 
 If you are using SCSS, modify your `application.css.scss`
 ```scss
+@import "bootstrap-sprockets";
 @import 'bootstrap';
 @import 'bootstrap-datetimepicker';
 ```
