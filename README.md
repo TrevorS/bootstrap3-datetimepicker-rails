@@ -13,8 +13,8 @@ actively maintained and works with [Bootstrap3](http://getbootstrap.com).
 
 Add these lines to your application's Gemfile:
 ```
-gem 'momentjs-rails', '>= 2.5.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0.2'
+gem 'momentjs-rails', '>= 2.7.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.0.2'
 ```
 
 And then execute:
@@ -41,7 +41,6 @@ Add the following to your Javascript manifest file (`application.js`):
 If you want to include a localization, also add:
 ```js
 //= require moment/<locale>
-//= require locales/bootstrap-datetimepicker.<locale>.js
 ```
 
 Add the following to your stylesheet file:
@@ -54,7 +53,7 @@ If you are using SCSS, modify your `application.css.scss`
 @import 'bootstrap-datetimepicker';
 ```
 
-If you're using just plain CSS, modify your `application.css`
+If you're using plain CSS, modify your `application.css`
 ```css
 *= require bootstrap
 *= require bootstrap-datetimepicker
