@@ -28,7 +28,7 @@ $ gem install momentjs-rails
 $ gem install bootstrap3-datetimepicker-rails
 ```
 
-To start using the bootstrap-datetimepicker plugin in your rails application, enable it via the asset pipeline.
+To start using the bootstrap-datetimepicker plugin in your Rails application, enable it via the asset pipeline.
 
 If your server is running, you will need to **restart Rails** before using the gem.
 
