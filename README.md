@@ -13,7 +13,7 @@ actively maintained and works with [Bootstrap3](http://getbootstrap.com).
 
 Add these lines to your application's Gemfile:
 ```ruby
-gem 'momentjs-rails', '>= 2.7.0'
+gem 'momentjs-rails', '>= 2.8.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.0.2'
 ```
 
