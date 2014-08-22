@@ -1,5 +1,5 @@
 /*
-//! version : 3.1.1
+//! version : 3.1.2
 =========================================================
 bootstrap-datetimepicker.js
 https://github.com/Eonasdan/bootstrap-datetimepicker
@@ -31,8 +31,11 @@ THE SOFTWARE.
     if (typeof define === 'function' && define.amd) {
         // AMD is used - Register as an anonymous module.
         define(['jquery', 'moment'], factory);
-    } else {
-        // AMD is not used - Attempt to fetch dependencies from scope.
+    } else if (typeof exports === 'object') {
+        factory(require('jquery'), require('moment'));
+    }
+    else {
+        // Neither AMD or CommonJS used. Use global variables.
         if (!jQuery) {
             throw new Error('bootstrap-datetimepicker requires jQuery to be loaded first');
         }
@@ -181,7 +184,9 @@ THE SOFTWARE.
             fillSeconds();
             update();
             showMode();
-            attachDatePickerEvents();
+            if (!getPickerInput().prop('disabled')) {
+                attachDatePickerEvents();
+            }
             if (picker.options.defaultDate !== '' && getPickerInput().val() === '') {
                 picker.setValue(picker.options.defaultDate);
             }
@@ -350,6 +355,7 @@ THE SOFTWARE.
                 picker.widget.css({
                     position: position,
                     top: offset.top,
+                    bottom: 'auto',
                     left: offset.left,
                     right: offset.right
                 });
@@ -1182,6 +1188,9 @@ THE SOFTWARE.
         };
 
         picker.show = function (e) {
+            if (getPickerInput().prop('disabled')) {
+                return;
+            }
             if (picker.options.useCurrent) {
                 if (getPickerInput().val() === '') {
                     if (picker.options.minuteStepping !== 1) {
@@ -1220,7 +1229,7 @@ THE SOFTWARE.
         };
 
         picker.disable = function () {
-            var input = picker.element.find('input');
+            var input = getPickerInput();
             if (input.prop('disabled')) {
                 return;
             }
@@ -1229,7 +1238,7 @@ THE SOFTWARE.
         };
 
         picker.enable = function () {
-            var input = picker.element.find('input');
+            var input = getPickerInput();
             if (!input.prop('disabled')) {
                 return;
             }
