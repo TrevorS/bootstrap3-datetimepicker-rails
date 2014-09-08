@@ -1,5 +1,5 @@
 /*
-//! version : 3.1.2
+//! version : 3.1.3
 =========================================================
 bootstrap-datetimepicker.js
 https://github.com/Eonasdan/bootstrap-datetimepicker
@@ -283,12 +283,6 @@ THE SOFTWARE.
             if (eData.dateDaysofweekdisabled !== undefined) {
                 picker.options.daysOfWeekDisabled = eData.dateDaysofweekdisabled;
             }
-//            $.each(defaults, function (key) {
-//                var attributeName = 'date' + key.charAt(0).toUpperCase() + key.slice(1);
-//                if (eData[attributeName] !== undefined) {
-//                    picker.options[key] = eData[attributeName];
-//                }
-//            });
         },
 
         place = function () {
@@ -919,13 +913,13 @@ THE SOFTWARE.
             if (picker.isInput) {
                 picker.element.off({
                     'focus': picker.show,
-                    'change': picker.change,
+                    'change': change,
                     'click': picker.show,
                     'blur' : picker.hide
                 });
             } else {
                 picker.element.off({
-                    'change': picker.change
+                    'change': change
                 }, 'input');
                 if (picker.component) {
                     picker.component.off('click', picker.show);
