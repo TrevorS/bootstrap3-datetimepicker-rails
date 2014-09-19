@@ -32,7 +32,7 @@ To start using the bootstrap-datetimepicker plugin in your Rails application, en
 
 If your server is running, you will need to **restart Rails** before using the gem.
 
-Add the following to your Javascript manifest file (`application.js`):
+Add the following to your JavaScript manifest file (`application.js`):
 ```js
 //= require moment
 //= require bootstrap-datetimepicker
@@ -43,7 +43,7 @@ If you want to include a localization, also add:
 //= require moment/<locale>
 ```
 
-Add the following to your stylesheet file:
+Add the following to your style sheet file:
 
 If you are using SCSS, modify your `application.css.scss`
 ```scss
@@ -62,6 +62,10 @@ If you're using plain CSS, modify your `application.css`
 ## Usage
 
 Check out the documentation at: http://eonasdan.github.io/bootstrap-datetimepicker/
+
+## Problems
+
+Clone https://github.com/TrevorS/bs3dp-test and try to reproduce your issue.
 
 ## Contributing
 
