@@ -48,7 +48,7 @@ Add the following to your style sheet file:
 If you are using SCSS, modify your `application.css.scss`
 ```scss
 // import bootstrap-sprockets before bootstrap if using bootstrap >= 3.2
-@import "bootstrap-sprockets";
+@import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'bootstrap-datetimepicker';
 ```
