@@ -14,7 +14,7 @@ actively maintained and works with [Bootstrap3](http://getbootstrap.com).
 Add these lines to your application's Gemfile:
 ```ruby
 gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 ```
 
 And then execute:
