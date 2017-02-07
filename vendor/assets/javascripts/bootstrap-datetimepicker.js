@@ -360,13 +360,13 @@
                     content.append(toolbar);
                 }
                 if (hasDate()) {
-                    content.append($('<li>').addClass((options.collapse && hasTime() ? 'collapse in' : '')).append(dateView));
+                    content.append($('<li>').addClass((options.collapse && hasTime() ? 'datetime-picker-collapse in' : '')).append(dateView));
                 }
                 if (options.toolbarPlacement === 'default') {
                     content.append(toolbar);
                 }
                 if (hasTime()) {
-                    content.append($('<li>').addClass((options.collapse && hasDate() ? 'collapse' : '')).append(timeView));
+                    content.append($('<li>').addClass((options.collapse && hasDate() ? 'datetime-picker-collapse' : '')).append(timeView));
                 }
                 if (options.toolbarPlacement === 'bottom') {
                     content.append(toolbar);
